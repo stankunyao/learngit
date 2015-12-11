@@ -1,0 +1,68 @@
+<%@ page language="java" pageEncoding="UTF-8"%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <title></title>
+ 	 <%@ include file="/commons/common_include.jsp"%> 
+    <script src="contents/agent/js/agent.js"></script>
+    <script>
+    </script>
+  </head>
+<body class="borderlayout">
+	<div region="north" size=110>
+	  	<div class="navbar">
+	  		<h1>运行监控</h1><br/><br></br>
+	  		<div class="navbar_son">
+	  		<h2><a href="javascript:monitor()"  style="text-decoration: none">实时监控</a></h2>
+           <h2><a href="javascript:monitorLog()" style="text-decoration: none">监控日志</a></h2>
+	  		</div>
+	  		<div class="navbar_son_line"></div>
+	  	</div>
+	</div>
+	<div region="center" id="monitor" style="height:160px">
+		<table id="templateTable"></table>
+	</div>
+	<div region="center" id="monitorLog" style="display:none" style="height:160px">
+		<div class="formarea">
+			<form id="templateSearchForm">
+			<fieldset>
+				<table>
+					<tr>
+						<td style="width:80px;height:40px"><label for="serverName">机器名称：</label></td>
+						<td>
+							<div class="input">
+								<input type="text" id="serverName"  name="serverName" size="20"  />
+							</div>
+						</td>
+						<td style="width:80px;height:40px"><label for="serviveName">服务名称：</label></td>
+						<td>
+							<div class="input">
+								<input type="text" id="serviceName" name="serviceName" size="20"  />
+							</div>
+						</td>
+						<td style="width:80px;height:40px"><label for="startReceivertime">通知时间：</label></td>
+						<td>
+							<div class="input">
+							<input type="text" id="startReceivertime" name="startReceivertime" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})" readonly/>
+							</div>
+						</td>
+						<td style="width:80px;height:40px"><label for="endReceivertime">至</label></td>
+						<td>
+							<div class="input">
+							<input type="text" id="endReceivertime" name="endReceivertime" class="Wdate" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})" readonly/>
+							</div>
+						</td>
+						<td><input type="button" id="searchB" value="查询"/>&nbsp;&nbsp;&nbsp;<input type="button" id="resetB" value="清空"/></td>
+					</tr>
+				</table>
+			</fieldset>
+			</form>
+		</div>		
+		<div class="toolbar">
+			<button id="excelExport">导出</button>
+		</div>
+		<table id="templateTableLog"></table>
+	</div>
+</body>
+</html>

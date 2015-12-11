@@ -1,0 +1,72 @@
+# This is the configuring for logging displayed in the Application Server
+log4j.rootCategory=ERROR, stdout , logfile
+
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+
+# Pattern to output the caller's file name and line number.
+log4j.appender.stdout.layout.ConversionPattern=%d %p [%c] - <%m>%n
+
+log4j.appender.R=org.apache.log4j.RollingFileAppender
+
+# You can change this to be an absolute path or even an environment variable
+# If you're using an environment variable, you will have to set JAVA_OPTS
+# to contain this variables - for example in the catalina.sh or catalina.bat
+# file
+
+log4j.appender.R.File=gtnet.log
+
+log4j.appender.R.MaxFileSize=100KB
+
+# Don't keep a backup file
+log4j.appender.R.MaxBackupIndex=0
+
+log4j.appender.R.layout=org.apache.log4j.PatternLayout
+log4j.appender.R.layout.ConversionPattern=%p %t %c - %m%n
+
+# Configuration for receiving e-mails when ERROR messages occur.
+#log4j.appender.mail=org.apache.log4j.net.SMTPAppender
+#log4j.appender.mail.To=@ERROR-MAILTO@
+#log4j.appender.mail.From=@ERROR-SERVER@@raibledesigns.com
+#log4j.appender.mail.SMTPHost=@ERROR-MAILHOST@
+#log4j.appender.mail.Threshold=ERROR
+#log4j.appender.mail.BufferSize=1
+#log4j.appender.mail.Subject=[@ERROR-SERVER@] @APPNAME@ Application Error
+
+log4j.appender.logfile=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.logfile.File=${themis.root}/logs/app.log
+log4j.appender.logfile.DatePattern=.yyyy-MM-dd
+log4j.appender.logfile.layout=org.apache.log4j.PatternLayout
+log4j.appender.logfile.layout.ConversionPattern=%d %p [%c] - <%m>%n
+
+#log4j.appender.mail.layout=org.apache.log4j.PatternLayout
+#log4j.appender.mail.layout.ConversionPattern=%d  %-5p %c %x - %m%n
+
+# If programmed properly the most messages would be at DEBUG 
+# and the least at FATAL.
+
+# Control logging for other open source packages
+log4j.logger.net.sf.ehcache=WARN
+log4j.logger.org.apache.commons=WARN
+log4j.logger.org.apache.struts=WARN
+log4j.logger.org.apache.struts.taglib=WARN
+log4j.logger.org.springframework=ERROR
+log4j.logger.com.opensymphony.xwork2.interceptor.ParametersInterceptor=OFF
+
+# All hibernate log output of "info" level or higher goes to stdout.
+# For more verbose logging, change the "info" to "debug" on the last line.
+log4j.logger.net.sf.hibernate.ps.PreparedStatementCache=WARN
+log4j.logger.net.sf.hibernate.cfg.Configuration=WARN
+log4j.logger.net.sf.hibernate.cfg.Binder=INFO
+log4j.logger.net.sf.hibernate=WARN
+
+
+#log4j.logger.net.sf.hibernate.cache=debug 
+# FOR DEVELOPING TIME 
+log4j.logger.com.gtnet=all
+log4j.logger.org.springframework.core.CollectionFactory=INFO
+
+#control logging for agent
+log4j.logger.com.harmony.apportal.sso=info
+log4j.logger.com.harmony.apportal.sdk=info
+log4j.logger.com.harmony.apportal.common=info

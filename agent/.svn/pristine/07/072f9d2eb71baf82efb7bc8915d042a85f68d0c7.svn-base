@@ -1,0 +1,18 @@
+#sde properties
+#company
+sde.url=192.168.1.75
+sde.wsurl=192.168.1.159
+#chongwen
+#sde.url=10.162.55.145
+sde.instance = 5151
+sde.username=themis_ds_kf
+sde.password=themis_ds_kf
+sde.database=orcl
+#max connection num
+sde.maxconn=40
+#min connection num
+sde.minconn=2
+# wait time when busy,unit is ms
+sde.waittime=5000
+# max Free connection
+sde.maxfreeconn = 5

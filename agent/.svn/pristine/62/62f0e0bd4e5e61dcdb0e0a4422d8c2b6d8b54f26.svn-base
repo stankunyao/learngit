@@ -1,0 +1,201 @@
+$(function() {
+	//grid自适应高度
+	$(window).resize(function(){
+	     $(window).unbind("onresize");
+	     jQuery("#templateTable").setGridHeight($(window).height()-162);
+	     jQuery("#templateTableLog").setGridHeight($(window).height()-235);
+	     $(window).bind("onresize", this);
+	});
+	jQuery("#templateTable").initGrid({
+		url : 'agent_getAbNormalByParamByPage.action',
+		shrinkToFit :true,	forceFit : true, pagination:true,//分页控件  
+		cols : [
+			{
+				header : 'id',
+				name : 'id',
+				hidden : true,
+				id : true,
+				index : 'ID',
+				width : 120
+			},
+			{
+				header : '机器名称',
+				name : 'serverName',
+				hidden : false,
+				id : false,
+				index : 'serverName',
+				align:'center',
+				width : 60
+			},
+			{
+				header : '服务器地址',
+				name : 'serverIp',
+				hidden : false,
+				id : false,
+				index : 'serverIp',
+				align:'center',
+				width : 60
+			},
+			{
+				header : '服务名称',
+				name : 'serviceName',
+				hidden : false,
+				id : false,
+				index : 'serviceName',
+				align:'center',
+				width : 60
+			}
+			,
+			{
+				header : '运行状态',
+				name : 'status',
+				hidden : false,
+				id : false,
+				index : 'status',
+				align:'center',
+				width : 60
+			},
+			{
+				header : '监控时间',
+				name : 'receivertime',
+				hidden : false,
+				id : false,
+				index : 'receivertime',
+				align:'center',
+				width : 80
+			}
+		],
+		ondblClickRow : function(rowid, iRow, iCol, e) {
+		}
+	});
+	jQuery("#templateTableLog").initGrid({
+		url : 'agent_getHistoryListByParamByPage.action',
+		shrinkToFit :true,	forceFit : true, 
+		cols : [
+			{
+				header : 'id',
+				name : 'id',
+				hidden : true,
+				id : true,
+				index : 'ID',
+				width : 120
+			},
+			{
+				header : '机器名称',
+				name : 'serverName',
+				hidden : false,
+				id : false,
+				index : 'serverName',
+				align:'center',
+				width : 120
+			},
+			{
+				header : '服务器地址',
+				name : 'serverIp',
+				hidden : false,
+				id : false,
+				index : 'serverIp',
+				align:'center',
+				width : 120
+			},
+			{
+				header : '服务名称',
+				name : 'serviceName',
+				hidden : false,
+				id : false,
+				index : 'serviceName',
+				align:'center',
+				width : 120
+			}
+			,
+			{
+				header : '错误类型',
+				name : 'errorType',
+				hidden : false,
+				id : false,
+				index : 'errorType',
+				align:'center',
+				width : 120
+			},
+			{
+				header : '通知时间',
+				name : 'sendTime',
+				hidden : false,
+				id : false,
+				index : 'sendTime',
+				align:'center',
+				width : 120
+			},
+			{
+				header : '通知类型',
+				name : 'sendType',
+				hidden : false,
+				id : false,
+				index : 'sendType',
+				align:'center',
+				width : 120
+			},
+			{
+				header : '接受对象',
+				name : 'receiveUser',
+				hidden : false,
+				id : false,
+				index : 'receiveUser',
+				align:'center',
+				width : 120
+			}
+			,
+			{
+				header : '通知状态',
+				name : 'sendStatus',
+				hidden : false,
+				id : false,
+				index : 'sendStatus',
+				align:'center',
+				width : 120
+			}
+			,
+			{
+				header : '发送内容',
+				name : 'sendContent',
+				hidden : false,
+				id : false,
+				index : 'sendContent',
+				align:'center',
+				width : 120
+			}
+		],
+		ondblClickRow : function(rowid, iRow, iCol, e) {
+		}
+	});
+	$("#searchB").click(function() {
+		search();
+	});
+	$("#resetB").click(function() {
+		$("#templateSearchForm").clearForm();
+		search();
+	});
+	function search(){
+		var params = $("#templateSearchForm").formToObject();
+		$("#templateTableLog").searchGrid(params);  
+	}
+	function searchByParam(params){
+	    $("#templateTableLog").searchGrid(params);  
+	}
+	$("#excelExport").click(function(){
+		var serverName=$("#serverName").val();
+		var serviceName=$("#serviceName").val();
+		var startReceivertime=$("#startReceivertime").val();
+		var endReceivertime=$("#endReceivertime").val();
+		location.href=templateRoot+"/agent_exportExcel.action?serviceName="+serviceName+"&serverName="+serverName+"&startReceivertime="+startReceivertime+"&endReceivertime="+endReceivertime;
+	});
+});
+
+function monitor(){
+	$("#monitorLog").hide();
+	$("#monitor").show();
+}
+function monitorLog(){
+	$("#monitor").hide();
+	$("#monitorLog").show();
+}

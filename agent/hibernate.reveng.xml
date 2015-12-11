@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+	<table name="hm_work_detail" catalog="themis" class="workDetail">
+		<primary-key>
+			<generator class="uuid.hex"></generator>
+		</primary-key>
+	</table>
+	<table name="hm_work" catalog="themis" class="work">
+		<primary-key>
+			<generator class="uuid.hex"></generator>
+		</primary-key>
+	</table>
+	<table name="hm_archiv_info" catalog="themis"
+		class="com.harmony.themis.persistence.domain.ArchivInfo">
+		<primary-key>
+			<generator class="uuid.hex"></generator>
+		</primary-key>
+	</table>
+	<table name="hm_audit_info" catalog="themis"
+		class="com.harmony.themis.persistence.domain.AuditInfo">
+		<primary-key>
+			<generator class="uuid.hex"></generator>
+		</primary-key>
+	</table>
+	<table name="hm_contractors_info" catalog="themis"
+		class="com.harmony.themis.persistence.domain.ContractorsInfo">
+		<primary-key>
+			<generator class="uuid.hex"></generator>
+		</primary-key>
+	</table>
+	<table name="hm_document_info" catalog="themis"
+		class="com.harmony.themis.persistence.domain.DocumentInfo">
+		<primary-key>
+			<generator class="uuid.hex"></generator>
+		</primary-key>
+	</table>
+	<table name="hm_track" catalog="themis"
+		class="com.harmony.themis.persistence.domain.Track">
+		<primary-key>
+			<generator class="uuid.hex"></generator>
+		</primary-key>
+	</table>
+	<table name="hm_meeting_back" catalog="themis"
+		class="MeetingBack">
+		<primary-key>
+			<generator class="uuid.hex"></generator>
+		</primary-key>
+	</table>
+	<table name="hm_meeting_backitems" catalog="themis"
+		class="MeetingBackItems">
+		<primary-key>
+			<generator class="uuid.hex"></generator>
+		</primary-key>
+	</table>
+	<table name="hm_meeting_sum" catalog="themis" class="MeetingSum">
+		<primary-key>
+			<generator class="uuid.hex"></generator>
+		</primary-key>
+	</table>
+	<table name="hm_meeting" catalog="themis" class="Meeting">
+		<primary-key>
+			<generator class="uuid.hex"></generator>
+		</primary-key>
+	</table>
+	<table name="hm_summery_send" catalog="themis"
+		class="SummerySend">
+		<primary-key>
+			<generator class="uuid.hex"></generator>
+		</primary-key>
+	</table>
+	<table name="hm_meetingitems" catalog="themis"
+		class="MeetingItems">
+		<primary-key>
+			<generator class="uuid.hex"></generator>
+		</primary-key>
+	</table>
+	<table name="hm_duty_actionlogs" catalog="themis"
+		class="DutyActionLogs">
+	</table>
+	<table name="hm_duty_details" catalog="themis"
+		class="DutyDetails">
+	</table>
+	<table name="hm_duty_elements" catalog="themis"
+		class="DutyElements">
+	</table>
+	<table name="hm_duty_items" catalog="themis" class="DutyItems"></table>
+	<table name="hm_duty_org_templates" catalog="themis"
+		class="DutyOrgTemplates">
+	</table>
+	<table name="hm_duty_periods" catalog="themis"
+		class="DutyPeriods">
+	</table>
+	<table name="hm_duty_periodtype" catalog="themis"
+		class="DutyPeriodType">
+	</table>
+	<table name="hm_duty_reports" catalog="themis"
+		class="DutyReports">
+	</table>
+	<table name="hm_duty_sysparams" catalog="themis"
+		class="DutySysParams">
+	</table>
+	<table name="hm_duty_template_attributes" catalog="themis"
+		class="DutyTemplateAttributes">
+	</table>
+	<table name="hm_duty_templates" catalog="themis"
+		class="DutyTemplates">
+	</table>
+	<table name="hm_person" catalog="themis" class="Person">
+		<primary-key>
+			<generator class="uuid.hex"></generator>
+		</primary-key>
+	</table>
+	<table name="hm_admin_log" catalog="themis" class="AdminLog">
+		<primary-key>
+			<generator class="uuid.hex"></generator>
+		</primary-key>
+	</table>
+	<table name="hm_dict_pycn" catalog="themis" class="DictPycn"></table>
+	<table name="hm_phone_admin_right" catalog="themis"
+		class="PhoneAdminRight">
+	</table>
+	<table name="hm_phone_custom_right" catalog="themis"
+		class="PhoneCustomRight">
+	</table>
+	<table name="hm_phone_right" catalog="themis" class="PhoneRight"></table>
+	<table name="hm_common_account" catalog="themis"
+		class="CommonAccount">
+	</table>
+	<table name="hm_onduty_template" catalog="themis"
+		class="OnDutyTemplate">
+	</table>
+	<table name="hm_summary_template" catalog="themis"
+		class="SummaryTemplate">
+	</table>
+<table name="hm_print_template" catalog="themis"
+	class="PrintTemplate">
+	<primary-key>
+		<generator class="uuid.hex"></generator>
+	</primary-key>
+</table>
+</hibernate-reverse-engineering>

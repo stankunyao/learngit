@@ -1,0 +1,23 @@
+msgClock=30
+sndMsgNum=0
+phoneNumber=15828611144
+
+#发送人邮箱配置
+smtpHostName=smtp.163.com
+userName=wleilucky@163.com
+passWord=wangyimeng.com
+
+#收件人邮件配置支持多个、用;隔开 eg: xx;xx;xx
+reviceEmailUserNames=379031809@qq.com;
+revicePhoneUserNames=13688043431;
+
+#设置服务端查询agent客户端多久没发送消息/以分为单位  建议10分钟、客户端5分钟请求一次、客户端<服务端 
+intervalTimer=1
+
+#选择连接的数据库sql server/oracle/mysql(0/1/2)
+databaseType=0
+
+sortMessageServerIp=10.190.241.17
+sortMessagePort=8001
+loginAccount=test1
+loginPassWord=disanfang101

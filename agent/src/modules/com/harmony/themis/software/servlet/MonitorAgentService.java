@@ -1,0 +1,238 @@
+package com.harmony.themis.software.servlet;
+
+import java.io.IOException;
+import java.net.URLDecoder;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
+import org.apache.commons.lang.StringUtils;
+
+import com.harmony.themis.commons.MessageConstants;
+import com.harmony.themis.main.util.PropertiesUtil;
+import com.harmony.themis.message.service.IMessageService;
+import com.harmony.themis.persistence.domain.Agent;
+import com.harmony.themis.persistence.domain.AgentHistory;
+import com.harmony.themis.persistence.domain.DispatchLog;
+import com.harmony.themis.persistence.domain.SmsOutbox4EMAS;
+import com.harmony.themis.software.domain.MonitorService;
+import com.harmony.themis.software.domain.NodeDocument;
+import com.harmony.themis.software.domain.SimpleMail;
+import com.harmony.themis.software.service.MonitorServiceInterface;
+import com.harmony.themis.software.service.MonitoryHistoryServiceInterface;
+import com.harmony.themis.software.service.imp.AgentServiceFactory;
+import com.harmony.themis.software.util.MailSenderFactory;
+import com.harmony.themis.software.util.SimpleMailSender;
+import com.harmony.themis.software.util.SpringUtil;
+import com.harmony.themis.zhdd.service.IDispatchLogService;
+
+public class MonitorAgentService extends HttpServlet {
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doPost(request, response);
+	}
+
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		String json = URLDecoder.decode(request.getHeader("IMONITOR_RESULTS"),
+				"UTF-8");
+		MonitorServiceInterface agentService = (MonitorServiceInterface) SpringUtil
+				.getBean("agentService");
+		MonitoryHistoryServiceInterface historyService = (MonitoryHistoryServiceInterface) SpringUtil
+				.getBean("historyService");
+		try {
+			AgentServiceFactory agentFactory = AgentServiceFactory
+					.getInstance();
+			MonitorService mS = new MonitorService();
+			JSONObject obj = JSONObject.fromObject(json);
+			String serverName = (String) obj.get("serverName");
+			String serverIP = (String) obj.getString("serverIP");
+			List<com.harmony.themis.software.domain.Process> expected = JSONArray
+					.toList(obj.getJSONArray("process"),
+							com.harmony.themis.software.domain.Process.class);
+			for (int i = 0; i < expected.size(); i++) {
+				com.harmony.themis.software.domain.Process process = expected
+						.get(i);
+				Agent agnet = this.setAgent(serverName, serverIP, process);
+				Agent preAgent = agentFactory.getService(serverIP
+						+ process.getName());
+				NodeDocument node = agentFactory.getProcess(serverIP,
+						process.getName());
+				AgentHistory history = this.setHistory(agnet);
+				if (node == null) {
+					agentFactory.setProcess(serverIP, process.getName(), null);
+				} 
+				// 发短信或者邮件进行异常通知
+				else if (process.getStatus().equals("0")
+						&& node.getState().equals("1")) {
+					String receiveEmailUserNames=PropertiesUtil.getInstance().getPro("config/AgentConfig.properties", "reviceEmailUserNames");
+					String receivePhoneUserNames=PropertiesUtil.getInstance().getPro("config/AgentConfig.properties", "receivePhoneUserNames");
+					List<String> users = new ArrayList<String>();
+					SimpleMail sm = new SimpleMail();
+					String subject=serverIP+"("+serverName+"):服务" + node.getServiceName()+ "出现问题";
+					String contents=serverIP+"("+serverName+"):服务"+ node.getServiceName()+ "出现问题，请及时处理。";
+					sm.setSubject(serverIP+"("+serverName+"):服务" + node.getServiceName()
+							+ "出现问题");// 主题
+					sm.setContent(serverIP+"("+serverName+"):服务"+ node.getServiceName()
+							+ "出现问题，请及时处理。");// 内容
+					history.setSendContent(sm.getContent());
+					history.setSendTime(new Date());
+					SimpleMailSender sender=MailSenderFactory.getSender();
+					if(StringUtils.isNotEmpty(receiveEmailUserNames))
+					{
+							String[] us=receiveEmailUserNames.split(";");
+							if(us!=null && us.length>0)
+							{
+								for(int a=0;a<us.length;a++)
+								{
+									history.setReceiveUser(us[a]);
+									history.setSendType("邮件");
+									try{
+									users.add(us[a]);
+									sender.send(users, sm);
+									history.setSendStatus("1");
+									users.remove(0);
+									}
+									catch(Exception e ){
+										history.setSendStatus("-1");
+									}
+									historyService.save(history);
+								}
+							}
+					}
+					if(StringUtils.isNotEmpty(receivePhoneUserNames)){
+						/*
+						 * 调用发送短信的代码
+						 * */
+						agentService.sendMessage(contents);
+					}
+				}
+				if (node != null) {
+					node.setState(process.getStatus());
+					agentFactory.setProcess(serverIP, process.getName(), node);
+				}
+				if (preAgent == null) {
+					agentService.save(agnet);
+					agentFactory.putService(agnet.getServiceName(), agnet);
+				}
+				if (preAgent != null) {
+					preAgent.setReceiveTime(new Date());
+					preAgent.setStatus(agnet.getStatus());
+					agentService.update(preAgent);
+				}
+			}
+			response.getOutputStream().write(this.makeJson().getBytes());
+			response.getOutputStream().flush();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+
+	private String makeJson() {
+		MonitorServiceInterface agentService = (MonitorServiceInterface) SpringUtil
+				.getBean("agentService");
+		StringBuffer rprocess = new StringBuffer();
+		String result = "{result:\"OK\",process: []}";
+		Agent parm = new Agent();
+		List<Agent> list = agentService
+				.findLisByParam(parm, 0, 100, null, null);
+		int i = 0;
+		rprocess.append("process: [");
+		for (Iterator it = list.iterator(); it.hasNext();) {
+			Agent ag = (Agent) it.next();
+			if (i == 0) {
+				rprocess.append("{ command:\"RESTART\", name:\"" + ag.getServiceName()+"\"}");
+			} else {
+				rprocess.append(",{ command:\"RESTART\", name:\""+ag.getServiceName()+ "\"}");
+			}
+			i++;
+		}
+		rprocess.append("]");
+		if (list.size() > 0) {
+			result = "{result:\"OK\"," + rprocess.toString() + "}";
+		}
+		return result;
+	}
+
+	private void sendMsg(String ip, NodeDocument node) throws Exception {
+		IMessageService messageService = (IMessageService) SpringUtil
+				.getBean("messageService");
+		String extCode = PropertiesUtil.getInstance()
+				.getPro(null, "SMSextcode");
+		String applicationid = PropertiesUtil.getInstance().getPro(null,
+				"applicationid");
+		String[] phoneNumber = node.getPhoneNumber();
+		Timestamp time = new Timestamp(new Date().getTime());
+		for (int i = 0; i < phoneNumber.length; i++) {
+			DispatchLog dispatchLog = this.addDispathLog(
+					ip + "服务" + node.getServiceName() + "出现问题", phoneNumber[i],
+					null, time, new String());
+			SmsOutbox4EMAS emasObj = new SmsOutbox4EMAS();
+			emasObj.setDestaddr(phoneNumber[i]);
+			emasObj.setMessagecontent(ip + "服务:" + node.getServiceName()
+					+ "出现问题");
+			emasObj.setRequesttime(time);
+			emasObj.setSismsid(dispatchLog.getId());
+			emasObj.setExtcode(extCode);
+			emasObj.setApplicationid(applicationid);
+			messageService.sendMsg4EMAS(emasObj);
+		}
+
+	}
+
+	private DispatchLog addDispathLog(String ct, String receivenums,
+			String receivePersons, Timestamp time, String smsid) {
+		IDispatchLogService dispatchLogService = (IDispatchLogService) SpringUtil
+				.getBean("dispatchLogService");
+		DispatchLog dispatchLog = new DispatchLog();
+		dispatchLog.setHandelType("短信");
+		dispatchLog.setMessageContent(ct);
+		dispatchLog.setReceiveNum(receivenums);
+		dispatchLog.setReceivePerson(receivePersons);
+		dispatchLog.setSendTime(time);
+		dispatchLog.setState("发送中");
+		dispatchLog.setSmsid(smsid);// 标记是哪条发送记录，用于后面更新发送状态
+		dispatchLog.setSynstate(MessageConstants.MESSAGE_SEND_NSYNSTATE);
+		dispatchLogService.saveDispatchLog(dispatchLog);
+		return dispatchLog;
+	}
+
+	private Agent setAgent(String serverName, String serverIP,
+			com.harmony.themis.software.domain.Process process) {
+		Agent agnet = new Agent();
+		agnet.setServiceName(process.getName());
+		agnet.setServerIp(serverIP);
+		agnet.setServerName(serverName);
+		agnet.setStatus(process.getStatus());
+		agnet.setReceiveTime(new Date());
+		return agnet;
+	}
+
+	private AgentHistory setHistory(Agent agnet) {
+		AgentHistory history = new AgentHistory();
+		history.setServerName(agnet.getServerName());
+		history.setReceivertimeStr(agnet.getReceivertimeStr());
+		history.setServerIp(agnet.getServerIp());
+		history.setServiceName(agnet.getServiceName());
+		history.setErrorType(agnet.getStatus());
+		return history;
+	}
+
+	@Override
+	public void init() throws ServletException {
+		MonitoryHistoryServiceInterface historyService = (MonitoryHistoryServiceInterface) SpringUtil
+				.getBean("historyService");
+	}
+
+}

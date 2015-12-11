@@ -1,0 +1,172 @@
+package com.harmony.themis.software.util;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import com.harmony.themis.main.util.PropertiesUtil;
+import com.harmony.themis.persistence.domain.Agent;
+import com.harmony.themis.persistence.domain.AgentHistory;
+import com.harmony.themis.software.domain.AgentView;
+import com.harmony.themis.software.domain.SimpleMail;
+import com.harmony.themis.software.service.MonitorServiceInterface;
+import com.harmony.themis.software.service.MonitoryHistoryServiceInterface;
+
+/**
+ * 自动扫描监控客户端状态的线程
+ * @author wanglei
+ *
+ */
+public class JniRecv implements ServletContextListener {
+	static private final Log logger = LogFactory.getLog(JniRecv.class);
+	private Map<String, String> serverStatus = new HashMap<String, String>();
+	
+	class PrimeThread extends Thread {
+        PrimeThread() {
+        }
+
+        public void run() {
+        	MonitoryHistoryServiceInterface historyService = (MonitoryHistoryServiceInterface) SpringUtil
+    				.getBean("historyService");
+        	MonitorServiceInterface agentService =(MonitorServiceInterface)SpringUtil.getBean("agentService");
+        	if(agentService==null)
+        	{
+        		logger.error("agentService服务对象取不到");
+        	}
+        	recvMsg(agentService, historyService);
+        }
+    }
+
+
+	/**
+	 * 检查客户端监控在规定时间内是否已经停止发送消息了、有一个异常及发送警报邮件
+	 * @param agentService
+	 */
+	private void recvMsg(MonitorServiceInterface agentService, MonitoryHistoryServiceInterface historyService) {
+		try{
+			while (true)
+			{
+				List<Agent> sampleList = new ArrayList<Agent>();
+				Agent param = new Agent();
+				param.setMonitorServiceStatu("0");
+				String intervalTimer=PropertiesUtil.getInstance().getPro("config/AgentConfig.properties", "intervalTimer");
+				param.setIntervalTimer(Integer.parseInt(intervalTimer));
+				sampleList = agentService.findMonitorServiceListBySqlByPage(param,
+						0,100,"receivertime","desc", true, "");
+				List<AgentView> agentList = new ArrayList<AgentView>();
+				agentList = agentService.setAgentView(agentList, sampleList);
+				List<AgentView> returnList=new ArrayList<AgentView>();
+				if(agentList!=null && agentList.size()>0)
+				{
+					returnList=returnAgentGroupByIp(agentList);//筛选出所有宕机的服务器，去掉重复的
+					String receiveEmailUserNames=PropertiesUtil.getInstance().getPro("config/AgentConfig.properties", "reviceEmailUserNames");
+					String receivePhoneUserNames=PropertiesUtil.getInstance().getPro("config/AgentConfig.properties", "receivePhoneUserNames");
+					if(returnList.size()>0)
+					{
+						for(AgentView v:returnList)
+						{
+							if(!v.getReceivertime().equals(serverStatus.get(v.getServerIp()))){
+								//将得到最新记录时间记录下来，防止服务器宕机未处理多次发送邮件
+								serverStatus.put(v.getServerIp(), v.getReceivertime());
+								//以服务器为单位修正状态为宕机
+								Agent paramCondition = new Agent();
+								paramCondition.setServerIp(v.getServerIp());
+								List<Agent> agentDownList = agentService.findLisByParam(paramCondition, 0, 100, "", "");
+								for(int i=0;i<agentDownList.size();i++){
+									Agent agentDown = agentDownList.get(i);
+									agentDown.setStatus("-1");
+									agentService.update(agentDown);
+									//将此次宕机情况记录到历史中
+									agentDown.setReceiveTime(new Date());
+									AgentHistory history = agentService.setHistory(agentDown);
+									List<String> users=new ArrayList<String>();
+									
+									/*组装一条邮件*/
+									SimpleMail sm=new SimpleMail();
+									sm.setSubject(v.getServerIp()+"("+v.getServerName()+")"+"的监控客户端出现问题");//主题
+									sm.setContent(v.getServerIp()+"("+v.getServerName()+")"+"的监控客户端出现问题，可能服务器已经宕机，请及时处理。");//内容
+									
+									history.setSendContent(sm.getSubject());
+									SimpleMailSender sender=MailSenderFactory.getSender();
+									if(StringUtils.isNotEmpty(receiveEmailUserNames))
+									{
+											String[] us=receiveEmailUserNames.split(";");
+											if(us!=null && us.length>0)
+											{
+												for(int a=0;a<us.length;a++)
+												{
+													history.setReceiveUser(us[i]);
+													history.setSendType("邮件");
+													try{
+													users.add(us[i]);
+													sender.send(users, sm);
+													history.setSendStatus("1");
+													users.remove(0);
+													}
+													catch(Exception e ){
+														history.setSendStatus("-1");
+													}
+													historyService.save(history);
+												}
+											}
+									}
+									if(StringUtils.isNotEmpty(receivePhoneUserNames)){
+										/*
+										 * 调用发送短信的代码
+										 * */
+									}
+								}
+							}
+						}
+						PrimeThread t = new PrimeThread();
+						t.sleep(1000*60);//隔10分钟报警一次
+					}
+				}else
+				{
+//					System.out.println("监控客户端正常运行...end");
+//					System.out.println("------------------------------------------------");
+				}
+			}
+		}catch(Exception e)
+		{
+			logger.error("监控线程出现异常....");
+			e.printStackTrace();
+		}
+	}
+
+	private List<AgentView> returnAgentGroupByIp(List<AgentView> agentList)
+	{
+		List<AgentView> agentListN = new ArrayList<AgentView>();   
+	     boolean flag = false;   
+	     for (AgentView sta : agentList) {   
+	         flag = false;   
+	         for (AgentView n : agentListN) {   
+	             if (n.equals(sta)) {   
+	                 flag = true;   
+	                 break;   
+	             }   
+	         }   
+	         if (!flag) {   
+	        	 agentListN.add(sta);   
+	         }   
+	     }
+	     return agentListN;
+	}
+	
+	@Override
+	public void contextDestroyed(ServletContextEvent arg0) {
+	}
+
+	@Override
+	public void contextInitialized(ServletContextEvent arg0) {//web.xml监听器初始化 开始线程
+		PrimeThread t = new PrimeThread();
+		t.start();
+	}
+
+}

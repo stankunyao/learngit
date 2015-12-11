@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:/db/db.properties</value>
+				<!-- 
+					<value>classpath:/applicationGlobal.properties</value>
+				-->
+			</list>
+		</property>
+	</bean>
+	
+	<!--  基于dhcp的连接池不再使用
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+
+		<property name="driverClassName">
+			<value>${jdbc.driverClassName}</value>
+		</property>
+		<property name="url">
+			<value>${jdbc.url}</value>
+		</property>
+		<property name="username">
+			<value>${jdbc.username}</value>
+		</property>
+		<property name="password">
+			<value>${jdbc.password}</value>
+		</property>
+	</bean>-->
+	
+	<!-- c3p0 pools Local DataSource that works in any environment -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass" value="${jdbc.driverClassName}"/>
+        <property name="jdbcUrl" value="${jdbc.url}"/>
+        <property name="user" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <property name="minPoolSize" value="${c3p0.minPoolSize}"/>
+        <property name="maxPoolSize" value="${c3p0.maxPoolSize}"/>
+        <property name="initialPoolSize" value="${c3p0.initialPoolSize}"/>
+        <property name="maxIdleTime" value="${c3p0.maxIdleTime}"/>
+        <property name="acquireIncrement" value="${c3p0.acquireIncrement}"/>
+        <property name="testConnectionOnCheckin" value="${c3p0.testConnectionOnCheckin}"/>
+        <property name="acquireRetryAttempts" value="${c3p0.acquireRetryAttempts}"/>
+        <property name="acquireRetryDelay" value="${c3p0.acquireRetryDelay}"/>
+        <property name="breakAfterAcquireFailure" value="${c3p0.breakAfterAcquireFailure}"/>
+        <property name="idleConnectionTestPeriod" value="${c3p0.idleConnectionTestPeriod}"/>
+        <property name="automaticTestTable" value="${c3p0.automaticTestTable}"/>
+	</bean>
+	
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="configurationClass">
+			<value>org.hibernate.cfg.AnnotationConfiguration</value>
+		</property>
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="configLocation">
+			<value>classpath:hibernate.cfg.xml</value>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+				 <prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="query.substitutions">
+					true 1, false 0, yes '1', no '1'
+				</prop>
+				<!-- 如果需要自动建表，则加上这一句.-->
+				<!--oracle 数据库必须添加上，否则内存越来越大，反应越来越慢！-->
+			<!-- 	<prop key="hibernate.jdbc.fetch_size">50</prop>
+				<prop key="hibernate.jdbc.batch_size">25</prop> -->
+				<!-- 
+					<prop key="hibernate.jdbc.use_scrollable_resultset">true</prop>
+					<prop key="hibernate.cache.use_query_cache">true</prop>
+					
+					<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+				--> 
+			</props>
+
+		</property>
+	</bean>
+
+
+	<!--Hibernate TransactionManager-->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!--事务代理，如果service需要事务，从此处继承Base TransactionProxyed Service Bean-->
+	<bean id="baseTxService"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean"
+		abstract="true">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="insert*">PROPAGATION_REQUIRED</prop>
+				<prop key="save*">PROPAGATION_REQUIRED</prop>
+				<prop key="update*">PROPAGATION_REQUIRED</prop>
+				<prop key="remove*">PROPAGATION_REQUIRED</prop>
+				<prop key="edit*">PROPAGATION_REQUIRED</prop>
+				<prop key="add*">PROPAGATION_REQUIRED</prop>
+				<prop key="del*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource">
+        	<ref bean="dataSource"/>
+        </property>
+    </bean>
+	
+</beans>

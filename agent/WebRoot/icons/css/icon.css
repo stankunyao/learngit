@@ -1,0 +1,976 @@
+.icon_myjob{
+	background-image: url(../icon/myjob.png) !important;
+	height:18px;
+	width:18px;
+}
+.icon_newmessages{
+	background-image: url(../icon/newmessages.png) !important;	
+	height:18px;
+	width:18px;
+}
+
+
+.icon_search{
+	background-image: url(../icon/search.png) !important;	
+	height:20px;
+	width:20px;
+}
+
+.icon_phone{
+	background-image: url(../icon/phone.png) !important;	
+	height:16px;
+	width:16px;
+}
+.icon_sms{
+	background-image: url(../icon/sms.png) !important;	
+	height:16px;
+	width:16px;
+}
+.icon_mail{
+	background-image: url(../icon/mail.png) !important;	
+	height:16px;
+	width:16px;
+}
+
+.menu_info_onduty {
+	background-image: url(../../../images/default/menu_info_onduty.png) !important;
+}
+.menu_duty_input {
+	background-image: url(../../../images/default/menu_duty_input.png) !important;
+} 
+.menu_duty_log {
+	background-image: url(../../../images/default/menu_duty_log.png) !important;
+}
+.menu_duty_rotation {
+	background-image: url(../../../images/default/menu_duty_rotation.png) !important;
+}
+.menu_duty_message {
+	background-image: url(../../../images/default/menu_duty_message.png) !important;
+}
+.menu_info_work {
+	background-image: url(../../../images/default/menu_info_work.png) !important;
+}
+.menu_info_stuff {
+	background-image: url(../../../images/default/menu_info_stuff.png) !important;
+}
+.menu_info_document {
+	background-image: url(../../../images/default/menu_info_document.png) !important;
+}
+.menu_duty_monitor{
+	background-image: url(../../../images/default/menu_duty_monitor.png) !important;
+}
+.menu_video_monitor{
+	background-image: url(../../../images/default/menu_video_monitor.png) !important;
+}
+
+.menu_info_monitor {
+	background-image: url(../../../images/default/menu_info_monitor.png) !important;
+}
+.menu_meeting_inner {
+	background-image: url(../../../images/default/menu_meeting_inner.png) !important;
+}
+.menu_meeting_outer {
+	background-image: url(../../../images/default/menu_meeting_outer.png) !important;
+}
+.menu_meeting_sum {
+	background-image: url(../../../images/default/menu_meeting_sum.png) !important;
+}
+.menu_phone_search {
+	background-image: url(../../../images/default/menu_phone_search.png) !important;
+}
+.menu_meeting_video {
+	background-image: url(../../../images/default/menu_meeting_video.png) !important;
+}
+.menu_analysis_event {
+	background-image: url(../../../images/default/menu_analysis_event.png) !important;
+}
+.menu_analysis_meeting {
+	background-image: url(../../../images/default/menu_analysis_meeting.png) !important;
+}
+.menu_analysis_leader {
+	background-image: url(../../../images/default/menu_analysis_leader.png) !important;
+}
+.menu_analysis_leadercxc {
+	background-image: url(../../../images/default/menu_analysis_leadercxc.png) !important;
+}
+.menu_analysis_leadermeeting {
+	background-image: url(../../../images/default/menu_analysis_leadermeeting.png) !important;
+}
+.menu_analysis_leadermeeting {
+	background-image: url(../../../images/default/menu_analysis_leadermeeting.png) !important;
+}
+.menu_analysis_report {
+	background-image: url(../../../images/default/menu_analysis_report.png) !important;
+}
+.menu_plan {
+	background-image: url(../../../images/default/menu_plan.png) !important;
+}
+.menu_function_phone_admin {
+	background-image: url(../../../images/default/menu_function_phone_admin.png) !important;
+}
+.menu_function_duty {
+	background-image: url(../../../images/default/menu_function_duty.png) !important;
+}
+.menu_system_print {
+	background-image: url(../../../images/default/menu_system_print.png) !important;
+}  
+.menu_function_message {
+	background-image: url(../../../images/default/menu_function_message.png) !important;
+}
+.menu_system_duty {
+	background-image: url(../../../images/default/menu_system_duty.png) !important;
+}
+.menu_opinion_config {
+	background-image: url(../../../images/default/menu_opinion_config.png) !important;
+}
+.menu_system_organize {
+	background-image: url(../../../images/default/menu/menu_system_organize.png) !important;
+}
+.menu_system_event_type {
+	background-image: url(../../../images/default/menu/menu_system_event_type.png) !important;
+}
+.menu_system_config {
+	background-image: url(../../../images/default/menu/menu_system_config.png) !important;
+}
+.menu_plans_tree{
+	background-image: url(../../../images/default/menu/menu_plans_tree.png) !important;
+}
+.menu_calamity_chain{
+	background-image: url(../../../images/default/menu/menu_calamity_chain.png) !important;
+}
+.menu_system_event_org_rela{
+	background-image: url(../../../images/default/menu/menu_system_event_org_rela.png) !important;
+}
+.menu_meeting {
+	background-image: url(../../../images/default/menu/menu_special_date.png) !important;
+}
+.menu_element {
+	background-image: url(../../../images/default/menu/menu_duty_order.png) !important;
+}
+.menu_system_template {
+	background-image: url(../../../images/default/menu/menu_system_template.png) !important;
+}
+.menu_data_import {
+	background-image: url(../../../images/default/menu/menu_data_import.png) !important;
+}
+.menu_data_import2 {
+	background-image: url(../../../images/default/menu_data_import.png) !important;
+}
+.menu_info_onduty_base {
+	background-image: url(../../../images/default/menu_info_onduty.png) !important;
+}
+.menu_duty_input_base {
+	background-image: url(../../../images/default/menu_duty_input.png) !important;
+}
+/**/
+.menu_phone_search_base {
+	background-image: url(../../../images/default/menu_phone_search.png) !important;
+}
+.menu_info_work_base {
+	background-image: url(../../../images/default/menu_info_work.png) !important;
+}
+.menu_info_stuff_base {
+	background-image: url(../../../images/default/menu_info_stuff.png) !important;
+}
+.menu_info_document_base {
+	background-image: url(../../../images/default/menu_info_document.png) !important;
+}
+.menu_meeting_outer_base {
+	background-image: url(../../../images/default/menu_meeting_outer.png) !important;
+}
+.menu_meeting_sum_base {
+	background-image: url(../../../images/default/menu_meeting_sum.png) !important;
+}
+.menu_resource_law {
+	background-image: url(../../../images/default/menu_resource_law.png) !important;
+}
+.menu_resource_case {
+	background-image: url(../../../images/default/menu_resource_case.png) !important;
+}
+.menu_resource_troop {
+	background-image: url(../../../images/default/menu_resource_troop.png) !important;
+}
+.menu_resource_expert {
+	background-image: url(../../../images/default/menu_resource_expert.png) !important;
+}
+.menu_resource_expert {
+	background-image: url(../../../images/default/menu_resource_expert.png) !important;
+}
+.menu_resource_material {
+	background-image: url(../../../images/default/menu_resource_material.png) !important;
+}
+.menu_resource_config {
+	background-image: url(../../../images/default/menu/menu_resource_config.png) !important;
+}
+/**/
+.icon-setting {
+    background-image: url(../../../images/default/setting.png) !important;
+}
+.icon-system {
+    background-image: url(../../../images/default/setting.png) !important;
+}
+.icon-resource {
+    background-image: url(../../../images/default/icon-resource.png)!important;
+}
+.message {
+    background-image: url(../../../images/default/message.png)!important;
+}
+.icon-info {
+    background-image: url(../../../images/default/navigation.png)!important;
+}
+.icon-info_base {
+    background-image: url(../../../images/default/navigation.png)!important;
+}
+.orgperson {
+	padding:25px 25px 50px 25px;
+	line-height:80px;
+	text-align:center;
+	border:0;
+    background:transparent url(../../../images/default/menu_orgperson.png) no-repeat center!important;
+}
+.eventtype {
+	padding:25px 25px 50px 25px;
+	line-height:80px;
+	text-align:center;
+	border:0;	
+    background:transparent url(../../../images/default/menu_eventtype.png) no-repeat center!important;
+}
+.system {
+	padding:25px 25px 50px 25px;
+	line-height:80px;
+	text-align:center;
+	border:0;	
+    background:transparent url(../../../images/default/menu/setting.png) no-repeat center!important;
+}
+.business{
+	padding:25px 25px 50px 25px;
+	line-height:80px;
+	text-align:center;
+	border:0;
+    background:transparent url(../../../images/default/menu_business.png) no-repeat center!important;
+}
+.save {
+    background-image: url(../../../images/default/save.gif) !important;
+}
+.win {
+    background-image: url(../../../images/default/icon-folder.gif) !important;
+}
+.logo {
+	width:100%;
+	height:60px;
+	top:0;
+	left:0;
+	position:absolute;
+	background-repeat: no-repeat;
+    background-image: url(../../../images/default/banner.gif) !important;
+}
+#showUserInfo{
+	 font: bold 11px tahoma,arial,helvetica,sans-serif;
+	 color: #cccccc;
+}
+#tools_info {
+	text-align:right;
+	margin-top:2px;
+	margin-right:3px;
+}
+#homepage {
+	width:18px;
+	height:17px;
+    background-image: url(../../../images/default/homepage.gif) !important;
+}
+#tool {
+	width:18px;
+	height:17px;
+    background-image: url(../../../images/default/tool.gif) !important;
+}
+#logout {
+	width:18px;
+	height:17px;
+    background-image: url(../../../images/default/logout.gif) !important;
+}
+#line {
+	width:2px;
+	height:11px;
+    background-image: url(../../../images/default/line.jpg) !important;
+}
+#nav {
+    padding-left:40px;
+    text-align:center;
+    background:url(../../../images/default/navBg.png) repeat-x left top; height:30px;WIDTH: 100%;POSITION: absolute;TOP: 60px;
+}
+#nav li{
+	float:left;
+	background-image: url(images/default/navLine.png);
+	background-repeat: no-repeat;
+	background-position: right center;
+	width:101px;
+	height:30px;
+	line-height:30px;
+	text-align: center;
+	vertical-align: middle;	
+	font-size:12px;
+}
+#nav li A.top_menu:link,A.top_menu:visited {
+	text-decoration:none;
+	font-size: 12px;
+	line-height: 30px;
+	font-weight: bold;
+	color: #15428b;
+}
+#nav li A.top_menu:hover {
+    background:url(../../../images/default/navBtBg.png) no-repeat center center;
+	width:101px;
+	height:30px;
+	text-decoration:none;
+	font-size: 12px;
+	line-height: 30px;
+	font-weight: bold;
+	color: #051d39;
+	}
+#nav li A.top_menu_current {
+    background:url(../../../images/default/navBtBg.png) no-repeat center center;
+	width:101px;
+	height:30px;
+	text-decoration:none;
+	font-size: 12px;
+	line-height: 30px;
+	font-weight: bold;
+	color: #051d39;
+ }		
+#nav li A.focus:link,A.focus:visited {
+    background:url(../../../images/default/navBtBg.png) no-repeat center center;
+	width:101px;
+	height:30px;
+	text-decoration:none;
+	font-size: 12px;
+	line-height: 30px;
+	font-weight: bold;
+	color: #051d39;
+}
+.icon-file{
+		background-image: url(../../../images/default/file.png) !important;
+}
+.icon-face{
+	    height: 16px;
+		width: 16px;
+		background-image: url(../../../images/default/face.gif) !important;
+}
+.icon-duty{
+	background-image: url(../../../images/default/duty.png) !important;
+ }
+.icon-meeting{
+	background-image: url(../../../images/default/meeting.png) !important;
+ } 
+.icon-analysis{
+	background-image: url(../../../images/default/stat.png) !important;
+ }
+.icon-chat{
+	background-image: url(../../../images/default/chat.png) !important;
+ }
+.icon-telphone{
+	background-image: url(../../../images/default/telphone.png) !important;
+ }   
+.icon-receive{
+	background-image: url(../../../images/default/receive.png) !important;
+ }
+.icon-user {
+    background-image: url(../../../images/default/user.gif) !important;
+}
+.icon-chatWin {
+    background-image: url(../../../images/default/icon_xa.png) !important;
+}
+.icon-attach {
+    background-image: url(../../../images/default/image_add.png) !important;
+}
+.icon-organize {
+    background-image: url(../../../images/default/organize.png) !important;
+}
+.icon-user {
+    background-image: url(../../../images/default/user.png) !important;
+}
+.icon-monitor {
+    background-image: url(../../../images/default/opinion_s.png) !important;
+}
+.icon-video {
+    background-image: url(../../../images/default/video_s.png) !important;
+}
+.online {
+    background-image: url(../../../images/default/user.png) !important;
+}
+.outline {
+    background-image: url(../../../images/default/user_gray.png) !important;
+}
+.outLine-message{
+    background-image: url(../../../images/default/outLine-message.gif) !important;
+}
+/** ??f???? */
+.ensure_rlbz {
+    background-image: url(../../../images/default/menu/ensure_rlbz.png) !important;
+}
+/** ??????? */
+.ensure_wzbz {
+    background-image: url(../../../images/default/menu/ensure_wzbz.png) !important;
+}
+/** ?????? */
+.ensure_txbz {
+    background-image: url(../../../images/default/menu/ensure_txbz.png) !important;
+}
+/** ?????? */
+.ensure_ysbz {
+    background-image: url(../../../images/default/menu/ensure_ysbz.png) !important;
+}
+/** ?????? */
+.ensure_ylbz {
+    background-image: url(../../../images/default/menu/ensure_ylbz.png) !important;
+}
+/** ??????? */
+.ensure_bncs {
+    background-image: url(../../../images/default/menu/ensure_bncs.png) !important;
+}
+/** ????? */
+.ensure_tybz {
+    background-image: url(../../../images/default/menu/tybz.png) !important;
+}
+.ensure_tjfx {
+	background-image: url(../../../images/default/menu/business_tjkh.png) !important;
+ }
+/** ??????? */
+.knowledge_yagl {
+    background-image: url(../../../images/default/menu/knowledge_yagl.png) !important;
+}
+/** ?????? */
+.knowledge_zsgl {
+    background-image: url(../../../images/default/menu/knowledge_zsgl.png) !important;
+}
+/** ??? */
+.ensure_rlbz_menu_zhuanjia {
+	background-image: url(../../../images/default/menu/ensure_rlbz_menu_zhuanjia.png) !important;
+}
+.ensure_tjfx_menu_tjfx {
+	background-image: url(../../../images/default/menu/ensure_tjfx_menu_tjfx.png) !important;
+}
+/** ??? */
+.ensure_rlbz_menu_renyuan {
+	background-image: url(../../../images/default/menu/ensure_rlbz_menu_renyuan.png) !important;
+}
+/** ???????? */
+.ensure_rlbz_menu_gongan {
+	background-image: url(../../../images/default/menu/ensure_rlbz_menu_gongan.png) !important;
+}
+/** ??????? */
+.ensure_rlbz_menu_jiuyuan {
+	background-image: url(../../../images/default/menu/ensure_rlbz_menu_jiuyuan.png) !important;
+}
+/** ??????? */
+.ensure_wzbz_menu_wuzi {
+	background-image: url(../../../images/default/menu/ensure_wzbz_menu_wuzi.png) !important;
+}
+/** ????????? */
+.ensure_wzbz_menu_chubei {
+	background-image: url(../../../images/default/menu/ensure_wzbz_menu_chubei.png) !important;
+}
+.ensure_wzbz_menu_shebei {
+	background-image: url(../../../images/default/menu/ensure_wzbz_menu_shebei.png) !important;
+}
+/** ?????? */
+.ensure_txbz_menu_tongxin {
+	background-image: url(../../../images/default/menu/ensure_txbz_menu_tongxin.png) !important;
+}
+/** ?????? */
+.ensure_ysbz_menu_yunshu {
+	background-image: url(../../../images/default/menu/ensure_ysbz_menu_yunshu.png) !important;
+}
+/** ??????? */
+.ensure_ylbz_menu_yiliao {
+	background-image: url(../../../images/default/menu/ensure_ylbz_menu_yiliao.png) !important;
+}
+/** ????? */
+.ensure_ylbz_menu_yiyuan {
+	background-image: url(../../../images/default/menu/ensure_ylbz_menu_yiyuan.png) !important;
+}
+/** ??????? */
+.ensure_bncs_menu_binan {
+	background-image: url(../../../images/default/menu/ensure_bncs_menu_binan.png) !important;
+}
+/** ????? */
+.ensure_tybz_menu_biaozhu {
+	background-image: url(../../../images/default/menu/ensure_tybz_menu_biaozhu.png) !important;
+}
+/** ??????? */
+.knowledge_yagl_menu_yagl {
+	background-image: url(../../../images/default/menu/knowledge_yagl_menu_yagl.png) !important;
+}
+/** ??????? */
+.knowledge_yagl_menu_jgh {
+	background-image: url(../../../images/default/menu/knowledge_yagl_menu_jgh.png) !important;
+}
+/** ?????j */
+.knowledge_yagl_menu_glya {
+	background-image: url(../../../images/default/menu/knowledge_yagl_menu_glya.png) !important;
+}
+/** ?????? */
+.knowledge_yagl_menu_yall {
+	background-image: url(../../../images/default/menu/knowledge_yagl_menu_yall.png) !important;
+}
+/** ????? */
+.knowledge_zsgl_menu_yjzs {
+	background-image: url(../../../images/default/menu/knowledge_zsgl_menu_yjzs.png) !important;
+}
+/** ??????? */
+.knowledge_zsgl_menu_yjal {
+	background-image: url(../../../images/default/menu/knowledge_zsgl_menu_yjal.png) !important;
+}
+/** ??????? */
+.knowledge_zsgl_menu_flfg {
+	background-image: url(../../../images/default/menu/knowledge_zsgl_menu_flfg.png) !important;
+}
+/* Created by Shuliang Liu 2009-6-25 */
+
+/* ???????? - ?????? */
+.business_zbgl{
+	background-image: url(../../../images/default/menu/business_zbgl.png) !important;
+ }
+
+/* ???????? - ?????? - ????? */
+ .business_zbgl_menu_zbap {
+	background-image: url(../../../images/default/menu/business_zbgl_menu_zbap.png) !important;
+}
+
+/* ???????? - ?????? - ?????? */
+ .business_zbgl_menu_zbrz {
+	background-image: url(../../../images/default/menu/business_zbgl_menu_zbrz.png) !important;
+}
+
+/* ???????? - ?????? - ??????? */
+ .business_zbgl_menu_jbgl {
+	background-image: url(../../../images/default/menu/business_zbgl_menu_jbgl.png) !important;
+}
+
+/* ???????? - ?????? - ?????? */
+ .business_zbgl_menu_zbdxyj {
+	background-image: url(../../../images/default/menu/business_zbgl_menu_zbdx.png) !important;
+}
+
+/* ???????? - ?????? - ?????? */
+ .business_zbgl_menu_zbsp {
+	background-image: url(../../../images/default/menu/business_zbgl_menu_zbsp.png) !important;
+}
+
+/* ???????? - ?????? - ????? */
+ .business_zbgl_menu_zbzt {
+	background-image: url(../../../images/default/menu/business_zbgl_menu_zbzt.png) !important;
+}
+
+/* ???????? - ?????? */
+.business_zsgl{
+	background-image: url(../../../images/default/menu/business_zsgl.png) !important;
+ }
+
+/* ???????? - ?????? - ??????? */
+ .business_zsgl_menu_sjgl {
+	background-image: url(../../../images/default/menu/business_zsgl_menu_sjgl.png) !important;
+}
+
+/* ???????? - ?????? - ????? */
+ .business_zsgl_menu_gzdt {
+	background-image: url(../../../images/default/menu/business_zsgl_menu_gzdt.png) !important;
+}
+
+/* ???????? - ?????? - ??????? */
+ .business_zsgl_menu_clsj {
+	background-image: url(../../../images/default/menu/business_zsgl_menu_clsj.png) !important;
+}
+
+/* ???????? - ?????? - ?閿�???? */
+ .business_zsgl_menu_dhcx {
+	background-image: url(../../../images/default/menu/business_zsgl_menu_dhcx.png) !important;
+}
+
+
+/* ???????? - ??????? */
+.business_rcgl {
+	background-image: url(../../../images/default/menu/business_rcgl.png) !important;
+ }
+
+/* ???????? - ??????? - ??????? */
+ .business_rcgl_menu_nbhy {
+	background-image: url(../../../images/default/menu/business_rcgl_menu_nbhy.png) !important;
+}
+
+/* ???????? - ??????? - ?????? */
+ .business_rcgl_menu_wbhy {
+	background-image: url(../../../images/default/menu/business_rcgl_menu_wbhy.png) !important;
+}
+
+/* ???????? - ??????? - ?????? */
+ .business_rcgl_menu_hyjy {
+	background-image: url(../../../images/default/menu/business_rcgl_menu_hyjy.png) !important;
+}
+
+/* ???????? - ??????? - ??????? */
+ .business_rcgl_menu_wjgl {
+
+	background-image: url(../../../images/default/menu/business_rcgl_menu_wjgl.png) !important;
+}
+
+
+/* ???????? - ?????? */
+.business_tjkh {
+	background-image: url(../../../images/default/menu/business_tjkh.png) !important;
+ }
+
+/* ???????? - ?????? - ????????? */
+ .business_tjkh_menu_tfsjtj {
+	background-image: url(../../../images/default/menu/business_tjkh_menu_tfsjtj.png) !important;
+}
+
+/* ???????? - ?????? - ????????? */
+ .business_tjkh_menu_hytztj {
+
+	background-image: url(../../../images/default/menu/business_tjkh_menu_hytztj.png) !important;
+}
+
+/* ???????? - ?????? - ???????? */
+ .business_tjkh_menu_ldpstj {
+
+	background-image: url(../../../images/default/menu/business_tjkh_menu_ldpstj.png) !important;
+}
+
+/* ???????? - ?????? - ?????????? */
+ .business_tjkh_menu_ldcxctj {
+	background-image: url(../../../images/default/menu/business_tjkh_menu_ldcxctj.png) !important;
+}
+
+/* ???????? - ?????? - ???浣�??? */
+ .business_tjkh_menu_ldchtj {
+
+	background-image: url(../../../images/default/menu/business_tjkh_menu_ldchtj.png) !important;
+}
+
+/* ???????? - ?????? - ?????????? */
+ .business_tjkh_menu_bsqktj {
+	background-image: url(../../../images/default/menu/business_tjkh_menu_bsqktj.png) !important;
+}
+
+
+/* ???????? - ???闇�?? */
+.setting_pzgl {
+	background-image: url(../../../images/default/menu/setting_pzgl.png) !important;
+ }
+
+/* ???????? - ???闇�?? - ?閿�????? */
+ .setting_pzgl_menu_dhgl {
+
+	background-image: url(../../../images/default/menu/setting_pzgl_menu_dhgl.png) !important;
+}
+
+/* ???????? - ???闇�?? - ?閿�????? */
+ .setting_pzgl_menu_dhdr {
+
+	background-image: url(../../../images/default/menu/setting_pzgl_menu_dhdr.png) !important;
+}
+ .business_rcgl_menu_rcap {
+
+	background-image: url(../../../images/default/menu/setting_pzgl_menu_dhdr.png) !important;
+}
+/* ???????? - ???闇�?? - ??????? */
+ .setting_pzgl_menu_gyzh {
+	background-image: url(../../../images/default/menu/setting_pzgl_menu_gyzh.png) !important;
+}
+/* ???????? - ???闇�?? - ??????FLASH */
+ .setting_pzgl_menu_flash {
+	background-image: url(../../../images/default/menu/setting_pzgl_menu_flash.png) !important;
+}
+
+/* ???????? - ?????? */
+.setting_mbgl {
+	background-image: url(../../../images/default/menu/setting_mbgl.png) !important;
+ }
+
+/* ???????? - ?????? - ???????? */
+ .setting_mbgl_menu_dxsz {
+	background-image: url(../../../images/default/menu/setting_mbgl_menu_dxsz.png) !important;
+}
+
+/* ???????? - ?????? - ?????? */
+ .setting_mbgl_menu_zbmb {
+	background-image: url(../../../images/default/menu/setting_mbgl_menu_zbmb.png) !important;
+}
+
+/* ???????? - ?????? - ?????? */
+ .setting_mbgl_menu_dymb {
+	background-image: url(../../../images/default/menu/setting_mbgl_menu_dymb.png) !important;
+}
+
+/* ???????? - ?????? */
+.business_jstx {
+	background-image: url(../../../images/default/menu/business_jstx.png) !important;
+ }
+
+/**鍗�??????*/
+.hazard_fxgl_menu_wxygl {
+	background-image: url(../../../images/default/menu/hazard_fxgl_menu_wxygl.png) !important;
+}
+/**?;???????*/
+.hazard_fxgl_menu_fhmb {
+	background-image: url(../../../images/default/menu/hazard_fxgl_menu_fhmb.png) !important;
+}
+/**??????????????*/
+.hazard_fxgl_menu_fzbz {
+	background-image: url(../../../images/default/menu/hazard_fxgl_menu_fzbz.png) !important;
+}
+/**????????*/
+.hazard_txjk_menu_zdtxfk {
+	background-image: url(../../../images/default/menu/hazard_txjk_menu_zdtxfk.png) !important;
+}
+/**????????*/
+.hazard_txjk_menu_kjtxfk {
+	background-image: url(../../../images/default/menu/hazard_txjk_menu_kjtxfk.png) !important;
+}
+
+/**??????????? ????*/
+.hazard_fxtj_menu_fxyhtj {
+	background-image: url(../../../images/default/menu/hazard_fxtj_menu_fxyhtj.png) !important;
+}
+/**????????????*/
+.hazard_fxtj_menu_fxyhfx {
+	background-image: url(../../../images/default/menu/hazard_fxtj_menu_fxyhfx.png) !important;
+}
+/**鍗�????? ????*/
+.hazard_fxtj_menu_fxyfb {
+	background-image: url(../../../images/default/menu/hazard_fxtj_menu_fxyfb.png) !important;
+}
+.hazard_fxtj_menu_fxyfb {
+	background-image: url(../../../images/default/menu/hazard_fxtj_menu_fxyfb.png) !important;
+}
+/**??????? ????*/
+.alarm_yjgl_menu_fxyhfx {
+	background-image: url(../../../images/default/menu/alarm_yjgl_menu_fxyhfx.png) !important;
+}
+/** ????????????*/
+.alarm_yjgl_menu_fzbz {
+	background-image: url(../../../images/default/menu/alarm_yjgl_menu_fzbz.png) !important;
+}
+.alarm_yjgl_menu_tjfx {
+	background-image: url(../../../images/default/menu/alarm_yjgl_menu_tjfx.png) !important;
+}
+
+/**??????*/
+.alarm_yqjk_menu_qwjs {
+	background-image: url(../../../images/default/menu/alarm_yqjk_menu_qwjs.png) !important;
+}
+/**??????*/
+.alarm_yqjk_menu_tjfx {
+	background-image: url(../../../images/default/menu/alarm_yqjk_menu_tjfx.png) !important;
+}
+/**??????*/
+.alarm_yqjk_menu_yqjk {
+	background-image: url(../../../images/default/menu/alarm_yqjk_menu_yqjk.png) !important;
+}
+/**?????*/
+.alarm_yqjk_menu_rdfx {
+	background-image: url(../../../images/default/menu/alarm_yqjk_menu_rdfx.png) !important;
+}
+/**?????*/
+.alarm_yqjk_menu_yqjb {
+	background-image: url(../../../images/default/menu/alarm_yqjk_menu_yqjb.png) !important;
+}
+/**???????*/
+.alarm_yqjk_menu_ztsj {
+	background-image: url(../../../images/default/menu/alarm_yqjk_menu_ztsj.png) !important;
+}
+/**??????????*/
+.alarm_yjfx_menu_yjdjfx {
+	background-image: url(../../../images/default/menu/alarm_yjfx_menu_yjdjfx.png) !important;
+}
+/**???????*/
+.command_zhdd_menu_sphy {
+	background-image: url(../../../images/default/menu/command_zhdd_menu_sphy.png) !important;
+}
+/**????? ????*/
+.command_zhdd_menu_zhdd {
+	background-image: url(../../../images/default/menu/command_zhdd_menu_zhdd.png) !important;
+}
+/**?????? ????*/
+.command_zhdd_menu_ddls {
+	background-image: url(../../../images/default/menu/command_zhdd_menu_ddls.png) !important;
+}
+/**?????? ????*/
+.command_zhdd_menu_xxls {
+	background-image: url(../../../images/default/menu/command_zhdd_menu_xxls.png) !important;
+}
+
+/**???????*/
+.hazard_fxgl {
+    background-image: url(../../../images/default/menu/hazard_fxgl.png) !important;
+}
+/**?????*/
+.hazard_txjk {
+    background-image: url(../../../images/default/menu/hazard_txjk.png) !important;
+}
+/**???????*/
+.hazard_fxtj {
+    background-image: url(../../../images/default/menu/hazard_fxtj.png) !important;
+}
+/**??????? ????*/
+.alarm_yjgl {
+    background-image: url(../../../images/default/menu/alarm_yjgl.png) !important;
+}
+/**??????*/
+.alarm_yqjk {
+    background-image: url(../../../images/default/menu/alarm_yqjk.png) !important;
+}
+/**???????*/
+.alarm_yjfx {
+    background-image: url(../../../images/default/menu/alarm_yjfx.png) !important;
+}
+/**????? ????*/
+.command_zhdd {
+    background-image: url(../../../images/default/menu/command_zhdd.png) !important;
+}
+.command_lscx {
+    background-image: url(../../../images/default/menu/command_lscx.gif) !important;
+}
+.alarm_yjgl_menu_yjfb {
+	background-image: url(../../../images/default/menu/alarm_yjgl_menu_yjfb.png) !important;
+}
+.alarm_yjgl_menu_yjgl {
+	background-image: url(../../../images/default/menu/alarm_yjgl_menu_yjgl.png) !important;
+}
+/**  mo ni yan lian */
+.imitate_mnyl {
+	background-image: url(../../../images/default/menu/imitate_mnyl.png) !important;
+ }
+ /**  lian xi mo shi */
+.imitate_mnyl_menu_lxms {
+	background-image: url(../../../images/default/menu/imitate_mnyl_menu_lxms.png) !important;
+}
+/** yan lian mo shi */
+.imitate_mnyl_menu_ylms {
+	background-image: url(../../../images/default/menu/imitate_mnyl_menu_ylms.png) !important;
+}
+.imitate_tiku {
+	background-image: url(../../../images/default/menu/imitate_tiku.png) !important;
+ }
+/** ti ku guan li */
+.imitate_tiku_menu_tkgl {
+	background-image: url(../../../images/default/menu/imitate_tiku_menu_tkgl.png) !important;
+}
+/** wen ti guan li */
+.imitate_tiku_menu_wtgl {
+	background-image: url(../../../images/default/menu/imitate_tiku_menu_wtgl.png) !important;
+}
+/** bu men guan li */
+.imitate_tiku_menu_bmgl {
+	background-image: url(../../../images/default/menu/imitate_tiku_menu_bmgl.png) !important;
+}
+.imitate_jilu {
+	background-image: url(../../../images/default/menu/imitate_jilu.png) !important;
+ }
+/** yan lian ji lu  */
+.imitate_jilu_menu_yljl {
+	background-image: url(../../../images/default/menu/imitate_jilu_menu_yljl.png) !important;
+}
+/** kong jian xia zai */
+.imitate_jilu_menu_kjxz {
+	background-image: url(../../../images/default/menu/imitate_jilu_menu_kjxz.png) !important;
+}
+
+
+/**鑿滃崟鍥炬爣*/
+.zqgl {
+
+	cursor:hand;
+	background-image: url(../icon/zqgl.png) !important;
+}
+.zbsy {
+
+	cursor:hand;
+	background-image: url(../icon/zbsy.png) !important;
+}
+.yjsf {
+
+	cursor:hand;
+	background-image: url(../icon/yjsf.png) !important;
+}
+.dxfs {
+
+	cursor:hand;
+	background-image: url(../icon/dxfs.png) !important;
+}
+.zbjl {
+
+	cursor:hand;
+	background-image: url(../icon/zbjl.png) !important;
+}
+.zbjlb {
+
+	cursor:hand;
+	background-image: url(../icon/zbjl.png) !important;
+}
+.zbqd {
+
+	cursor:hand;
+	background-image: url(../icon/zbqd.png) !important;
+}
+.zbfcx {
+
+	cursor:hand;
+	background-image: url(../icon/zbfcx.png) !important;
+}
+.zqtxl {
+
+	cursor:hand;
+	background-image: url(../icon/zqtxl.png) !important;
+}
+.zbap {
+
+	cursor:hand;
+	background-image: url(../icon/zbap.png) !important;
+}
+.zbrzgl {
+
+	cursor:hand;
+	background-image: url(../icon/zbrzgl.png) !important;
+}
+.xgpzgl {
+
+	cursor:hand;
+	background-image: url(../icon/xgpzgl.png) !important;
+}
+.dhlygl {
+
+	cursor:hand;
+	background-image: url(../icon/dhlygl.png) !important;
+}
+.dhjl {
+
+	cursor:hand;
+	background-image: url(../icon/dhlygl.png) !important;
+}
+.mbpzgl {
+
+	cursor:hand;
+	background-image: url(../icon/mbpzgl.png) !important;
+}
+.znpbpz {
+
+	cursor:hand;
+	background-image: url(../icon/znpbpz.png) !important;
+}
+.zrzq {
+
+	cursor:hand;
+	background-image: url(../icon/zrzq.png) !important;
+}
+.yjdxrzgl {
+
+	cursor:hand;
+	background-image: url(../icon/yjdxrzgl.png) !important;
+}
+.txlgl {
+
+	cursor:hand;
+	background-image: url(../icon/txlgl.png) !important;
+}
+

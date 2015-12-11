@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+	<bean id="msgSendTask4EMASDao"
+		class="com.harmony.themis.message.persistence.dao.impl.MsgSendTask4EMASDaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactorySmsEmas"/>
+		</property>
+	</bean>
+	<!-- 短信发送Service START-->
+	
+	<bean id="messageService" parent="baseTxService">
+		<property name="target">
+			<bean
+				class="com.harmony.themis.message.service.impl.MessageServiceImpl">		
+				<property name="msgSendTask4EMASDao">
+					<ref bean="msgSendTask4EMASDao"/>
+				</property>
+			</bean>
+		</property>
+	</bean>  
+	<!-- 短信发送Service END-->
+	<bean id="synSmsTask" class="com.harmony.themis.message.service.SmsMessageTask"></bean>
+	<bean id="scheduleReportTask" class="org.springframework.scheduling.timer.ScheduledTimerTask"> 
+	   <property name="timerTask" ref="synSmsTask" />   
+	    <property name="delay">     
+            <value>180000</value>     
+        </property>  
+	   <property name="period">
+	     <value>18000000</value> 
+	   </property>	   
+	</bean>
+	<bean class="org.springframework.scheduling.timer.TimerFactoryBean">
+	   <property name="scheduledTimerTasks">  
+	       <list><ref bean="scheduleReportTask"/>
+	       </list>   
+	    </property>
+	</bean>
+</beans>

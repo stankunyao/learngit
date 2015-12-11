@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+	<bean id="agentService" parent="baseTxService">
+		<property name="target">
+			<bean
+				class="com.harmony.themis.software.service.imp.MonitorServiceImp">
+				<property name="dao">
+					<ref bean="agentDao" />
+				</property>
+				
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="agentDao"
+		class="com.harmony.themis.software.dao.imp.MonitorServiceDaoImp">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+
+<bean name="job" class="org.springframework.scheduling.quartz.JobDetailBean">
+<property name="jobClass" value="com.harmony.themis.software.util.AutoRunCheck" />
+<property name="jobDataAsMap">
+<map>
+<entry key="timeout" value="0" />
+</map>
+</property>
+</bean>
+	
+<!-- 对应于作业继QuartzJobBean类的方式  -->
+<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+<property name="jobDetail" ref="job" />
+<!--
+"cronExpression"的配置说明
+字段   允许值   允许的特殊字符
+秒    0-59    , - * /
+分    0-59    , - * /
+小时    0-23    , - * /
+日期    1-31    , - * ? / L W C
+月份    1-12 或者 JAN-DEC    , - * /
+星期    1-7 或者 SUN-SAT    , - * ? / L C #
+年（可选）    留空, 1970-2099    , - * /
+- 区间 
+* 通配符 
+? 你不想设置那个字段
+-->
+<property name="cronExpression" value="0 0 9 ? * MON" />
+</bean>
+
+<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+<property name="triggers">
+<list>
+<ref bean="cronTrigger" />
+</list>
+</property>
+</bean>
+</beans>
